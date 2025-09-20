@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>♻️ReWear - Sürdürülebilir Gelecek İçin Giysilerine Yeni Bir Hayat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #bbc7ff 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            color: #2c3e50;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        nav li {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        nav li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        nav button:hover {
+            color: #fff;
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            min-height: 500px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .hero h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fabric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .fabric-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .fabric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .fabric-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .damage-level {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .damage-bar {
+            height: 10px;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+            background: #e0e0e0;
+        }
+        
+        .damage-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        .high { background: linear-gradient(45deg, #eb8089, #eb8089); }
+        .medium { background: linear-gradient(45deg, #ffa502, #ff6348); }
+        .low { background: linear-gradient(45deg, #2ed573, #7bed9f); }
+        
+        .calculator {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .calculator button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: rgb(196, 195, 195);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .calculator button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: rgb(194, 189, 189);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .marketplace-item {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .comment-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .phone-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(135deg, #94a6f7 0%, #764ba2 100%);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+        
+        .result-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="map" style="width:100%; height:300px; margin:20px;"></div>
+        <div id="puanKismi" style="margin:20px;">
+            <h3>🏆 Puan Durumun</h3>
+            <p id="puan">0</p>
+        </div>
+        <div id="gununBilgisi" style="margin:20px; padding:10px; border:1px solid #ccc;">
+            <h3>🧵 Günün Bilgisi</h3>
+            <p id="bilgi"></p>
+        </div>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 10px;">
+        <button onclick="setTheme('dark')">🌙 Dark Mode</button>
+        <button onclick="setTheme('green')">🌿 Green Mode</button>
+        <button onclick="setTheme('light')">☀️ Light Mode</button>
+        <select id="languageSelect" onchange="changeLanguage(this.value)" style="padding:8px; border-radius:8px;">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+        </select>
+    </div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>ReWear</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><button onclick="showSection('home')">Ana Sayfa</button></li>
+                    <li><button onclick="showSection('fabrics')">Kumaş Türleri</button></li>
+                    <li><button onclick="showSection('carbon')">Karbon Ayak İzi</button></li>
+                    <li><button onclick="showSection('about')">Hakkımızda</button></li>
+                    <li><button onclick="showSection('upload')">Fotoğraf Yükle</button></li>
+                    <li><button onclick="showSection('marketplace')">İkinci El Satış</button></li>
+                    <li><button onclick="showSection('community')">Bugün Ne Dönüştürdün?</button></li>
+                    <li><button onclick="showSection('otherworks')">Diğer Çalışmalar</button></li>
+                    <li><button onclick="showSection('contact')">İletişim</button></li>
+                    <li><button onclick="showSection('register')">Üye Ol</button></li>
+                    <li><button onclick="showSection('login')">Giriş Yap</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- Diğer Çalışmalar -->
+            <div id="otherworks" class="section">
+                <h2>Tekstil Atıkları ile İlgili Diğer Çalışmalar</h2>
+                <div style="background: linear-gradient(135deg, #eaf7ea 0%, #d299c2 100%); padding: 30px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Fabbrick" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>Fabbrick</h3>
+                        <p>Fabbrick, tekstil atıklarını geri dönüştürerek yapı malzemesi olarak kullanılabilen yenilikçi tuğlalar üreten bir Fransız girişimdir. Atık kumaşları presleyerek dayanıklı ve çevre dostu bloklar üretir.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%); padding: 30px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Favscrap" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>Favscrap</h3>
+                        <p>Favscrap, tekstil endüstrisinden çıkan atık kumaşları toplayıp, bunları yeniden kullanıma ve geri dönüşüme kazandıran bir platformdur. Sektörde döngüsel ekonomiyi destekler.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%); padding: 30px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="GÜS Yasası" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>GÜS Yasası</h3>
+                        <p>GÜS (Genişletilmiş Üretici Sorumluluğu) Yasası, üreticilerin ürünlerinin ömrü sonunda oluşan atıkların geri dönüşümünden sorumlu olmasını zorunlu kılan bir düzenlemedir. Tekstil sektöründe atıkların azaltılması ve geri dönüşümün teşvik edilmesi için önemli bir adımdır.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #d299c2 0%, #eaf7ea 100%); padding: 30px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Textile Recycling Startup" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>Textile Recycling Startup</h3>
+                        <p>Bu girişim, eski giysileri ve tekstil atıklarını toplayarak ileri dönüşüm teknolojileriyle yeni iplik ve kumaşlara dönüştürüyor. Yenilikçi makinelerle atıkların %90'ı yeniden kullanıma kazandırılıyor.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 30px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1520962917960-6c2487d0d6c5?auto=format&fit=crop&w=400&q=80" alt="Circular Fashion Lab" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>Circular Fashion Lab</h3>
+                        <p>Circular Fashion Lab, döngüsel moda ve tekstil atıklarının yeniden değerlendirilmesi için Ar-Ge projeleri yürütüyor. Akıllı tekstil ve biyolojik bazlı malzemelerle sürdürülebilir ürünler geliştiriyor.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fcb69f 0%, #94a6f7 100%); padding: 30px; border-radius: 15px; display: flex; align-items: center; gap: 30px;">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Green Thread Project" style="width:180px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+                    <div>
+                        <h3>Green Thread Project</h3>
+                        <p>Green Thread Project, tekstil atıklarından elde edilen ipliklerle yeni moda ürünleri tasarlıyor. Atıkların izlenebilirliğini sağlayan blockchain tabanlı bir platform ile şeffaflık ve sürdürülebilirlik sunuyor.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Üye Ol -->
+            <div id="register" class="section">
+                <h2>Üye Ol</h2>
+                <div class="form-group">
+                    <label>Kullanıcı Adı:</label>
+                    <input type="text" id="regUsername" placeholder="Kullanıcı adınız">
+                </div>
+                <div class="form-group">
+                    <label>E-posta:</label>
+                    <input type="email" id="regEmail" placeholder="E-posta adresiniz">
+                </div>
+                <div class="form-group">
+                    <label>Şifre:</label>
+                    <input type="password" id="regPassword" placeholder="Şifreniz">
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" id="rememberMe"> Beni Hatırla</label>
+                </div>
+                <button onclick="kayitOl()" style="background: linear-gradient(45deg, #2ed573, #7bed9f); color: #222; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer;">Kayıt Ol</button>
+            </div>
+
+            <!-- Giriş Yap -->
+            <div id="login" class="section">
+                <h2>Giriş Yap</h2>
+                <div class="form-group">
+                    <label>Kullanıcı Adı:</label>
+                    <input type="text" id="loginUsername" placeholder="Kullanıcı adınız">
+                </div>
+                <div class="form-group">
+                    <label>Şifre:</label>
+                    <input type="password" id="loginPassword" placeholder="Şifreniz">
+                </div>
+                <div class="form-group">
+                    <label><input type="checkbox" id="loginRemember"> Beni Hatırla</label>
+                </div>
+                <button onclick="girisYap()" style="background: linear-gradient(45deg, #667eea, #764ba2); color: #fff; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer;">Giriş Yap</button>
+            </div>
+            <!-- Ana Sayfa -->
+            <div id="home" class="section active">
+                <div class="hero">
+                    <h2>Sürdürülebilir Gelecek İçin Tekstil Atık Yönetimi</h2>
+                    <p><strong>Tekstil Atıkları Nedir?</strong></p>
+                    <p>Tekstil atıkları, üretim sürecinde oluşan kumaş artıkları, kullanılmayan giysiler ve ev tekstil ürünleridir. Dünyada yılda 92 milyon ton tekstil atığı üretilmektedir.</p>
+                    
+                    <p><strong>Çevreye Zararları:</strong></p>
+                    <p>• Su kirliliği: Boyama süreçlerinde kullanılan kimyasallar</p>
+                    <p>• Mikroplastik kirliliği: Sentetik kumaşlardan çıkan parçacıklar</p>
+                    <p>• Sera gazı emisyonu: Üretim ve taşıma süreçlerinde</p>
+                    <p>• Toprak kirliliği: Bozunmayan sentetik malzemeler</p>
+                    
+                    <p><strong>Nasıl Azaltılabilir:</strong></p>
+                    <p>✓ Geri dönüşüm ve upcycling projelerine katılım</p>
+                    <p>✓ İkinci el alışveriş tercih etme</p>
+                    <p>✓ Kaliteli, uzun ömürlü ürünler satın alma</p>
+                    <p>✓ Kıyafet takası ve paylaşım ekonomisi</p>
+                    
+                    <p style="margin-top: 30px; font-weight: bold; color: #51545f;">ReWear olarak misyonumuz, tekstil atıklarını azaltarak kıyafetlere ikinci bir hayat kazandırmak, sürdürülebilir moda anlayışını yaygınlaştırmak ve herkesin küçük adımlarla dünyamız için büyük bir değişime ortak olmasını sağlamaktır.”</p>
+                </div>
+            </div>
+
+            <!-- Kumaş Türleri -->
+            <div id="fabrics" class="section">
+                <h2>Kumaş Türlerinin Çevresel Etkisi</h2>
+                <div class="fabric-grid">
+                    <div class="fabric-card">
+                        <h3>🧶 Polyester</h3>
+                        <div class="damage-level">
+                            <span>Çevresel Zarar:</span>
+                            <div class="damage-bar">
+                                <div class="damage-fill high" style="width: 90%;"></div>
+                            </div>
+                            <span>Çok Yüksek</span>
+                        </div>
+                        <p><strong>Zararları:</strong></p>
+                        <ul>
+                            <li>200-600 yıl bozunma süresi</li>
+                            <li>Mikroplastik salınımı</li>
+                            <li>Yüksek enerji tüketimi</li>
+                        </ul>
+                        <p><strong>Ne yapabilirsiniz:</strong></p>
+                        <ul>
+                            <li>Polyester giysilerinizi özel geri dönüşüm merkezlerine götürün</li>
+                            <li>Mikro-plastik yakalayıcı çamaşır torbaları kullanın</li>
+                            <li>Upcycling projelerinde yeniden değerlendirin</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fabric-card">
+                        <h3>🕷️ Naylon</h3>
+                        <div class="damage-level">
+                            <span>Çevresel Zarar:</span>
+                            <div class="damage-bar">
+                                <div class="damage-fill high" style="width: 85%;"></div>
+                            </div>
+                            <span>Yüksek</span>
+                        </div>
+                        <p><strong>Zararları:</strong></p>
+                        <ul>
+                            <li>30-40 yıl bozunma süresi</li>
+                            <li>Üretimde yüksek karbon salınımı</li>
+                            <li>Su kirliliği yaratan kimyasallar</li>
+                        </ul>
+                        <p><strong>Ne yapabilirsiniz:</strong></p>
+                        <ul>
+                            <li>Naylon ürünleri mümkün olduğunca uzun süre kullanın</li>
+                            <li>Yıprandığında spor çantası veya temizlik bezi yapın</li>
+                            <li>Geri dönüşüm programlarına katılın</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fabric-card">
+                        <h3>🌾 Pamuk</h3>
+                        <div class="damage-level">
+                            <span>Çevresel Zarar:</span>
+                            <div class="damage-bar">
+                                <div class="damage-fill medium" style="width: 60%;"></div>
+                            </div>
+                            <span>Orta</span>
+                        </div>
+                        <p><strong>Zararları:</strong></p>
+                        <ul>
+                            <li>Yoğun su kullanımı (1 tişört = 2700 litre)</li>
+                            <li>Pestisit kullanımı</li>
+                            <li>Toprak verimliliğini azaltma</li>
+                        </ul>
+                        <p><strong>Ne yapabilirsiniz:</strong></p>
+                        <ul>
+                            <li>Organik pamuk tercih edin</li>
+                            <li>Pamuklu ürünleri kompost yapın</li>
+                            <li>Temizlik bezi olarak yeniden kullanın</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fabric-card">
+                        <h3>🌿 Organik Kumaşlar</h3>
+                        <div class="damage-level">
+                            <span>Çevresel Zarar:</span>
+                            <div class="damage-bar">
+                                <div class="damage-fill low" style="width: 30%;"></div>
+                            </div>
+                            <span>Düşük</span>
+                        </div>
+                        <p><strong>Avantajları:</strong></p>
+                        <ul>
+                            <li>Doğada hızla bozunur</li>
+                            <li>Kimyasal kullanımı minimum</li>
+                            <li>Sürdürülebilir üretim</li>
+                        </ul>
+                        <p><strong>Destekleme yolları:</strong></p>
+                        <ul>
+                            <li>Organik sertifikalı ürünleri tercih edin</li>
+                            <li>Yerel üreticileri destekleyin</li>
+                            <li>Doğal boyalı ürünleri seçin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Karbon Ayak İzi -->
+            <div id="carbon" class="section">
+                <h2>Karbon Ayak İzi Hesaplayıcı</h2>
+                <p>Karbon ayak izi, bir kişi, organizasyon veya ürünün atmosfere salınan sera gazlarının toplam miktarıdır. Tekstil endüstrisi, küresel karbon emisyonlarının %10'undan sorumludur.</p>
+                
+                <div class="calculator">
+                    <h3>Kıyafet Karbon Ayak İzi Hesaplayıcısı</h3>
+                    
+                    <div class="form-group">
+                        <label>Kıyafet Türü:</label>
+                        <select id="clothingType">
+                            <option value="">Seçiniz</option>
+                            <option value="15">Tişört (15 kg CO2)</option>
+                            <option value="25">Pantolon (25 kg CO2)</option>
+                            <option value="35">Ceket (35 kg CO2)</option>
+                            <option value="8">İç Giyim (8 kg CO2)</option>
+                            <option value="12">Çorap (12 kg CO2)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Aylık Satın Alma Adedi:</label>
+                        <input type="number" id="monthlyPurchase" placeholder="Örn: 3" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Kullanım Süresi (ay):</label>
+                        <input type="number" id="usageDuration" placeholder="Örn: 24" min="1">
+                    </div>
+                    
+                    <button onclick="calculateCarbon()">Karbon Ayak İzini Hesapla</button>
+                    
+                    <div id="carbonResult" class="result-box" style="display: none;">
+                        <h4>Sonuçlarınız:</h4>
+                        <div id="resultContent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hakkımızda -->
+            <div id="about" class="section">
+                <h2>Hakkımızda</h2>
+                <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); padding: 30px; border-radius: 15px;">
+                    <h3>🌍 Misyonumuz</h3>
+                    <p>ReWear, 2025 yılında sürdürülebilir moda ve çevre bilincini artırmak amacıyla kurulmuş bir platformdur. Tekstil atıklarının çevreye verdiği zararı azaltmak ve toplumda farkındalık yaratmak temel hedeflerimizdir.</p>
+                    
+                    <h3>🎯 Vizyonumuz</h3>
+                    <p>Türkiye'de tekstil atıklarının sıfır atık hedefiyle yönetildiği, herkesin sürdürülebilir tüketim alışkanlıklarına sahip olduğu bir gelecek hayal ediyoruz.</p>
+                    
+                    <h3>💡 Değerlerimiz</h3>
+                    <ul style="margin: 15px 0;">
+                        <li><strong>Sürdürülebilirlik:</strong> Çevreye saygılı çözümler üretmek</li>
+                        <li><strong>Şeffaflık:</strong> Açık ve dürüst iletişim</li>
+                        <li><strong>Toplum:</strong> Herkesin katılımını sağlamak</li>
+                        <li><strong>İnovasyon:</strong> Teknoloji ile çevre korumayı birleştirmek</li>
+                    </ul>
+                    
+                    <h3>📊 Başarılarımız</h3>
+                    <p>• 2024 yılında 1000+ kullanıcıya ulaştık</p>
+                    <p>• 500+ kıyafet geri dönüşümünde rol oynadık</p>
+                    <p>• 50+ şehirde geri dönüşüm atölyesi ile işbirliği kurduk</p>
+                    <p>• 10 ton CO2 emisyon azaltımı sağladık</p>
+                </div>
+            </div>
+
+            <!-- Fotoğraf Yükleme -->
+            <div id="upload" class="section">
+                <h2>Kıyafet Analizi ve Geri Dönüşüm Önerileri</h2>
+                
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <h3>📸 Kıyafetinizin Fotoğrafını Yükleyin</h3>
+                    <p>Tıklayın veya dosyayı buraya sürükleyin</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="analyzeClothing(this)">
+                </div>
+                
+                <div id="analysisResult" class="result-box" style="display: none;">
+                    <h3>🔍 Analiz Sonucu</h3>
+                    <div id="fabricType"></div>
+                    
+                    <h4>📍 Size En Yakın Geri Dönüşüm Atölyeleri</h4>
+                    <div class="map-placeholder">
+                        🗺️ Harita yükleniyor... (Konum izni gerekli)
+                    </div>
+                    <div id="nearbyWorkshops"></div>
+                    
+                    <h4>🏠 Evde Yapabileceğiniz Geri Dönüşüm Projeleri</h4>
+                    <div id="diyProjects"></div>
+                </div>
+            </div>
+
+            <!-- İkinci El Satış -->
+            <div id="marketplace" class="section">
+                <h2>İkinci El Kıyafet Pazarı</h2>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3>🛒 Satışa Çıkar</h3>
+                    <div class="marketplace-item">
+                        <div class="form-group">
+                            <label>Ürün Fotoğrafı:</label>
+                            <input type="file" id="productImage" accept="image/*">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Ürün Türü:</label>
+                            <select id="productType">
+                                <option value="">Seçiniz</option>
+                                <option value="tshirt">Tişört</option>
+                                <option value="pants">Pantolon</option>
+                                <option value="dress">Elbise</option>
+                                <option value="jacket">Ceket</option>
+                                <option value="shoes">Ayakkabı</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Kumaş Türü:</label>
+                            <select id="fabricTypeMarket">
+                                <option value="">Seçiniz</option>
+                                <option value="cotton">Pamuk</option>
+                                <option value="polyester">Polyester</option>
+                                <option value="denim">Kot</option>
+                                <option value="wool">Yün</option>
+                                <option value="silk">İpek</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Beden:</label>
+                            <input type="text" id="size" placeholder="Örn: M, 38, L">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Fiyat (TL):</label>
+                            <input type="number" id="price" placeholder="Örn: 50" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Açıklama:</label>
+                            <textarea id="description" rows="3" placeholder="Ürününüzü detaylı açıklayın..."></textarea>
+                        </div>
+                        
+                        <button onclick="addToMarketplace()" style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer;">Satışa Çıkar</button>
+                    </div>
+                </div>
+                
+                <h3>🛍️ Satılık Ürünler</h3>
+                <div id="marketplaceItems">
+                    <div class="marketplace-item">
+                        <h4>Vintage Kot Ceket</h4>
+                        <p><strong>Kumaş:</strong> %100 Pamuk | <strong>Beden:</strong> M | <strong>Fiyat:</strong> 75 TL</p>
+                        <p>Az kullanılmış, çok temiz durumda vintage kot ceket. Sürdürülebilir moda için ideal!</p>
+                        <button style="background: #2ed573; color: white; padding: 10px 20px; border: none; border-radius: 15px; cursor: pointer;">İletişime Geç</button>
+                    </div>
+                    
+                    <div class="marketplace-item">
+                        <h4>Organik Pamuk Tişört</h4>
+                        <p><strong>Kumaş:</strong> Organik Pamuk | <strong>Beden:</strong> L | <strong>Fiyat:</strong> 35 TL</p>
+                        <p>Hiç kullanılmamış, etiketli organik pamuk tişört.</p>
+                        <button style="background: #2ed573; color: white; padding: 10px 20px; border: none; border-radius: 15px; cursor: pointer;">İletişime Geç</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topluluk -->
+            <div id="community" class="section">
+                <h2>🌟 Bugün Ne Dönüştürdün?</h2>
+                <p>Başarı hikayelerinizi paylaşın ve diğer kullanıcıları motive edin!</p>
+                
+                <div class="form-group">
+                    <label>Projenizin Fotoğrafını Yükleyin:</label>
+                    <input type="file" accept="image/*" id="projectImage">
+                </div>
+                
+                <div class="form-group">
+                    <label>Başarı Hikayenizi Paylaşın:</label>
+                    <textarea rows="4" placeholder="Hangi kıyafeti nasıl dönüştürdünüz? Süreç nasıldı? Başkaları için tavsiyeleriniz neler?"></textarea>
+                </div>
+                
+                <button onclick="shareSuccess()" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer;">Hikayemi Paylaş</button>
+                
+                <div style="margin-top: 30px;">
+                    <h3>🎉 Topluluk Başarı Hikayeleri</h3>
+                    
+                    <div class="comment-card">
+                        <h4>Ayşe K. - İstanbul</h4>
+                        <p>"Eski kot pantolonumu harika bir çanta haline getirdim! YouTube'dan öğrendiğim teknikle 3 saatte tamamladım. Artık her yere bu çantayla gidiyorum 💙"</p>
+                        <small>2 gün önce paylaşıldı</small>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <h4>Mehmet D. - Ankara</h4>
+                        <p>"5 adet tişörtümü temizlik bezi yaparak 2 yıldır kullanıyorum. Hem çevreci hem de ekonomik bir çözüm bulmuş oldum!"</p>
+                        <small>1 hafta önce paylaşıldı</small>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <h4>Zeynep M. - İzmir</h4>
+                        <p>"Kızımın küçüldüğü elbiseleri kardeşimin bebeği için yeniden dikerek uyarladım. Upcycling harika bir yöntem!"</p>
+                        <small>2 hafta önce paylaşıldı</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İletişim -->
+            <div id="contact" class="section">
+                <h2>📞 İletişim</h2>
+                <div class="contact-info">
+                    <h3>Bizimle İletişime Geçin</h3>
+                    <p>Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.</p>
+                    
+                    <div class="phone-number">
+                        📱 05309760674
+                    </div>
+                    
+                    <p>Bu numaradan bizi arayabilir veya WhatsApp üzerinden mesaj gönderebilirsiniz.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4>İletişim Formu</h4>
+                        <div class="form-group">
+                            <label>Adınız:</label>
+                            <input type="text" id="contactName" placeholder="Adınız ve soyadınız">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>E-posta:</label>
+                            <input type="email" id="contactEmail" placeholder="ornek@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Konu:</label>
+                            <select id="contactSubject">
+                                <option value="">Seçiniz</option>
+                                <option value="genel">Genel Bilgi</option>
+                                <option value="isbirligi">İşbirliği Teklifi</option>
+                                <option value="teknik">Teknik Destek</option>
+                                <option value="oneri">Öneri/Şikayet</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Mesajınız:</label>
+                            <textarea id="contactMessage" rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
+                        </div>
+                        
+                        <button onclick="sendMessage()" style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 30px; border: none; border-radius: 25px; cursor: pointer;">Mesaj Gönder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Çoklu dil desteği için genişletilmiş çeviri sözlükleri
+        const translations = {
+            en: {
+                "Ana Sayfa": "Home",
+                "Kumaş Türleri": "Fabric Types",
+                "Karbon Ayak İzi": "Carbon Footprint",
+                "Hakkımızda": "About Us",
+                "Fotoğraf Yükle": "Upload Photo",
+                "İkinci El Satış": "Second Hand Market",
+                "Bugün Ne Dönüştürdün?": "What Did You Upcycle Today?",
+                "Diğer Çalışmalar": "Other Projects",
+                "İletişim": "Contact",
+                "Üye Ol": "Register",
+                "Giriş Yap": "Login",
+                "Sürdürülebilir Gelecek İçin Tekstil Atık Yönetimi": "Textile Waste Management for a Sustainable Future",
+                "Tekstil Atıkları Nedir?": "What are Textile Wastes?",
+                "Çevreye Zararları:": "Environmental Damages:",
+                "Nasıl Azaltılabilir:": "How to Reduce:",
+                "Geri dönüşüm ve upcycling projelerine katılım": "Participate in recycling and upcycling projects",
+                "İkinci el alışveriş tercih etme": "Prefer second-hand shopping",
+                "Kaliteli, uzun ömürlü ürünler satın alma": "Buy quality, long-lasting products",
+                "Kıyafet takası ve paylaşım ekonomisi": "Clothing swap and sharing economy",
+                "Kumaş Türlerinin Çevresel Etkisi": "Environmental Impact of Fabric Types",
+                "Karbon Ayak İzi Hesaplayıcı": "Carbon Footprint Calculator",
+                "Kıyafet Analizi ve Geri Dönüşüm Önerileri": "Clothing Analysis & Recycling Suggestions",
+                "İkinci El Kıyafet Pazarı": "Second Hand Clothing Market",
+                "Başarı hikayelerinizi paylaşın ve diğer kullanıcıları motive edin!": "Share your success stories and motivate others!",
+                "Bizimle İletişime Geçin": "Contact Us",
+                "Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.": "You can contact us for questions, suggestions or collaboration offers.",
+                "Kullanıcı Adı:": "Username:",
+                "E-posta:": "Email:",
+                "Şifre:": "Password:",
+                "Beni Hatırla": "Remember Me",
+                "Kayıt Ol": "Register",
+                "Adınız:": "Your Name:",
+                "Konu:": "Subject:",
+                "Mesajınız:": "Your Message:",
+                "Mesaj Gönder": "Send Message"
+            },
+            de: {
+                "Ana Sayfa": "Startseite",
+                "Kumaş Türleri": "Stoffarten",
+                "Karbon Ayak İzi": "CO2-Fußabdruck",
+                "Hakkımızda": "Über Uns",
+                "Fotoğraf Yükle": "Foto Hochladen",
+                "İkinci El Satış": "Secondhand-Markt",
+                "Bugün Ne Dönüştürdün?": "Was hast du heute upgecycelt?",
+                "Diğer Çalışmalar": "Weitere Projekte",
+                "İletişim": "Kontakt",
+                "Üye Ol": "Registrieren",
+                "Giriş Yap": "Anmelden",
+                "Sürdürülebilir Gelecek İçin Tekstil Atık Yönetimi": "Textilabfall-Management für eine nachhaltige Zukunft",
+                "Tekstil Atıkları Nedir?": "Was sind Textilabfälle?",
+                "Çevreye Zararları:": "Umweltschäden:",
+                "Nasıl Azaltılabilir:": "Wie kann man reduzieren:",
+                "Geri dönüşüm ve upcycling projelerine katılım": "Teilnahme an Recycling- und Upcycling-Projekten",
+                "İkinci el alışveriş tercih etme": "Secondhand-Einkauf bevorzugen",
+                "Kaliteli, uzun ömürlü ürünler satın alma": "Qualitativ hochwertige, langlebige Produkte kaufen",
+                "Kıyafet takası ve paylaşım ekonomisi": "Kleidertausch und Sharing Economy",
+                "Kumaş Türlerinin Çevresel Etkisi": "Umweltauswirkungen von Stoffarten",
+                "Karbon Ayak İzi Hesaplayıcı": "CO2-Fußabdruck Rechner",
+                "Kıyafet Analizi ve Geri Dönüşüm Önerileri": "Kleidung Analyse & Recycling-Tipps",
+                "İkinci El Kıyafet Pazarı": "Secondhand-Kleidungsmarkt",
+                "Başarı hikayelerinizi paylaşın ve diğer kullanıcıları motive edin!": "Teile deine Erfolgsgeschichte und motiviere andere!",
+                "Bizimle İletişime Geçin": "Kontaktieren Sie uns",
+                "Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.": "Sie können uns für Fragen, Vorschläge oder Kooperationen kontaktieren.",
+                "Kullanıcı Adı:": "Benutzername:",
+                "E-posta:": "E-Mail:",
+                "Şifre:": "Passwort:",
+                "Beni Hatırla": "Angemeldet bleiben",
+                "Kayıt Ol": "Registrieren",
+                "Adınız:": "Ihr Name:",
+                "Konu:": "Betreff:",
+                "Mesajınız:": "Ihre Nachricht:",
+                "Mesaj Gönder": "Nachricht senden"
+            },
+            fr: {
+                "Ana Sayfa": "Accueil",
+                "Kumaş Türleri": "Types de tissus",
+                "Karbon Ayak İzi": "Empreinte carbone",
+                "Hakkımızda": "À propos de nous",
+                "Fotoğraf Yükle": "Télécharger une photo",
+                "İkinci El Satış": "Marché d'occasion",
+                "Bugün Ne Dönüştürdün?": "Qu'as-tu upcyclé aujourd'hui?",
+                "Diğer Çalışmalar": "Autres projets",
+                "İletişim": "Contact",
+                "Üye Ol": "S'inscrire",
+                "Giriş Yap": "Connexion",
+                "Sürdürülebilir Gelecek İçin Tekstil Atık Yönetimi": "Gestion des déchets textiles pour un avenir durable",
+                "Tekstil Atıkları Nedir?": "Qu'est-ce que les déchets textiles?",
+                "Çevreye Zararları:": "Dommages environnementaux:",
+                "Nasıl Azaltılabilir:": "Comment réduire:",
+                "Geri dönüşüm ve upcycling projelerine katılım": "Participer à des projets de recyclage et d'upcycling",
+                "İkinci el alışveriş tercih etme": "Privilégier l'achat d'occasion",
+                "Kaliteli, uzun ömürlü ürünler satın alma": "Acheter des produits de qualité et durables",
+                "Kıyafet takası ve paylaşım ekonomisi": "Échange de vêtements et économie de partage",
+                "Kumaş Türlerinin Çevresel Etkisi": "Impact environnemental des types de tissus",
+                "Karbon Ayak İzi Hesaplayıcı": "Calculateur d'empreinte carbone",
+                "Kıyafet Analizi ve Geri Dönüşüm Önerileri": "Analyse de vêtements & suggestions de recyclage",
+                "İkinci El Kıyafet Pazarı": "Marché de vêtements d'occasion",
+                "Başarı hikayelerinizi paylaşın ve diğer kullanıcıları motive edin!": "Partagez vos histoires de réussite et motivez les autres!",
+                "Bizimle İletişime Geçin": "Contactez-nous",
+                "Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.": "Vous pouvez nous contacter pour des questions, suggestions ou offres de collaboration.",
+                "Kullanıcı Adı:": "Nom d'utilisateur:",
+                "E-posta:": "E-mail:",
+                "Şifre:": "Mot de passe:",
+                "Beni Hatırla": "Se souvenir de moi",
+                "Kayıt Ol": "S'inscrire",
+                "Adınız:": "Votre nom:",
+                "Konu:": "Sujet:",
+                "Mesajınız:": "Votre message:",
+                "Mesaj Gönder": "Envoyer le message"
+            },
+            ar: {
+                "Ana Sayfa": "الصفحة الرئيسية",
+                "Kumaş Türleri": "أنواع الأقمشة",
+                "Karbon Ayak İzi": "بصمة الكربون",
+                "Hakkımızda": "معلومات عنا",
+                "Fotoğraf Yükle": "رفع صورة",
+                "İkinci El Satış": "سوق الملابس المستعملة",
+                "Bugün Ne Dönüştürdün?": "ماذا أعدت تدويره اليوم؟",
+                "Diğer Çalışmalar": "مشاريع أخرى",
+                "İletişim": "اتصل بنا",
+                "Üye Ol": "تسجيل",
+                "Giriş Yap": "تسجيل الدخول",
+                "Sürdürülebilir Gelecek İçin Tekstil Atık Yönetimi": "إدارة نفايات النسيج من أجل مستقبل مستدام",
+                "Tekstil Atıkları Nedir?": "ما هي نفايات النسيج؟",
+                "Çevreye Zararları:": "الأضرار البيئية:",
+                "Nasıl Azaltılabilir:": "كيف تقلل:",
+                "Geri dönüşüm ve upcycling projelerine katılım": "المشاركة في مشاريع إعادة التدوير والتطوير",
+                "İkinci el alışveriş tercih etme": "تفضيل التسوق المستعمل",
+                "Kaliteli, uzun ömürlü ürünler satın alma": "شراء منتجات عالية الجودة وطويلة العمر",
+                "Kıyafet takası ve paylaşım ekonomisi": "تبادل الملابس واقتصاد المشاركة",
+                "Kumaş Türlerinin Çevresel Etkisi": "تأثير أنواع الأقمشة على البيئة",
+                "Karbon Ayak İzi Hesaplayıcı": "حاسبة بصمة الكربون",
+                "Kıyafet Analizi ve Geri Dönüşüm Önerileri": "تحليل الملابس ونصائح إعادة التدوير",
+                "İkinci El Kıyafet Pazarı": "سوق الملابس المستعملة",
+                "Başarı hikayelerinizi paylaşın ve diğer kullanıcıları motive edin!": "شارك قصص نجاحك وحفز الآخرين!",
+                "Bizimle İletişime Geçin": "اتصل بنا",
+                "Sorularınız, önerileriniz veya işbirliği teklifleriniz için bize ulaşabilirsiniz.": "يمكنك التواصل معنا للأسئلة أو الاقتراحات أو عروض التعاون.",
+                "Kullanıcı Adı:": "اسم المستخدم:",
+                "E-posta:": "البريد الإلكتروني:",
+                "Şifre:": "كلمة المرور:",
+                "Beni Hatırla": "تذكرني",
+                "Kayıt Ol": "تسجيل",
+                "Adınız:": "اسمك:",
+                "Konu:": "الموضوع:",
+                "Mesajınız:": "رسالتك:",
+                "Mesaj Gönder": "إرسال الرسالة"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('button, h1, h2, h3, h4, h5, label, p, small, option, strong, span, ul li').forEach(el => {
+                let original = el.getAttribute('data-original') || el.innerText.trim();
+                if (!el.getAttribute('data-original')) el.setAttribute('data-original', original);
+                if (translations[lang] && translations[lang][original]) {
+                    el.innerText = translations[lang][original];
+                } else if (lang === 'tr') {
+                    el.innerText = el.getAttribute('data-original');
+                }
+            });
+            document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+                let original = el.getAttribute('data-original-placeholder') || el.getAttribute('placeholder');
+                if (!el.getAttribute('data-original-placeholder')) el.setAttribute('data-original-placeholder', original);
+                if (translations[lang] && translations[lang][original]) {
+                    el.setAttribute('placeholder', translations[lang][original]);
+                } else if (lang === 'tr') {
+                    el.setAttribute('placeholder', el.getAttribute('data-original-placeholder'));
+                }
+            });
+        }
+
+        // Son estetik düzenlemeler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Kartlara ve bölümlere gölge ve animasyon ekle
+            document.querySelectorAll('.section, .fabric-card, .marketplace-item, .comment-card, .result-box, .contact-info').forEach(el => {
+                el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.10)';
+                el.style.transition = 'box-shadow 0.3s, transform 0.3s';
+            });
+            document.querySelectorAll('.section').forEach(el => {
+                el.style.borderRadius = '18px';
+                el.style.background = 'rgba(255,255,255,0.97)';
+            });
+            // Hover animasyonu
+            document.querySelectorAll('.fabric-card, .marketplace-item, .comment-card').forEach(el => {
+                el.addEventListener('mouseover', function() {
+                    el.style.transform = 'scale(1.03)';
+                    el.style.boxShadow = '0 16px 40px rgba(0,0,0,0.18)';
+                });
+                el.addEventListener('mouseout', function() {
+                    el.style.transform = '';
+                    el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.10)';
+                });
+            });
+        });
+        function initMap() {
+            var konum = { lat: 39.9208, lng: 32.8541 }; // Ankara örnek
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: konum
+            });
+            new google.maps.Marker({ position: konum, map: map });
+        }
+            function kayitOl() {
+                const user = {
+                    username: document.getElementById("regUsername").value,
+                    email: document.getElementById("regEmail").value,
+                    password: document.getElementById("regPassword").value,
+                    remember: document.getElementById("rememberMe").checked
+                };
+                localStorage.setItem("kullanici", JSON.stringify(user));
+                alert("Kayıt başarılı!");
+                showSection('login');
+            }
+
+            function girisYap() {
+                const kayitli = JSON.parse(localStorage.getItem("kullanici"));
+                const username = document.getElementById("loginUsername").value;
+                const password = document.getElementById("loginPassword").value;
+                const remember = document.getElementById("loginRemember").checked;
+
+                if (kayitli && kayitli.username === username && kayitli.password === password) {
+                    alert("Hoşgeldin " + username);
+                    if (remember) {
+                        localStorage.setItem("oturum", username);
+                    }
+                    showSection('home');
+                } else {
+                    alert("Kullanıcı adı veya şifre yanlış!");
+                }
+            }
+        let puan = localStorage.getItem("puan") || 0;
+        document.getElementById("puan").innerText = puan;
+
+        function puanKazan(miktar) {
+            puan = parseInt(puan) + miktar;
+            localStorage.setItem("puan", puan);
+            document.getElementById("puan").innerText = puan;
+
+            if (puan >= 10) {
+                alert("🎉 Tebrikler! Çevre Koruyucusu rozetini kazandın!");
+            }
+        }
+        // Örnek: siteye girince otomatik +1 puan
+        puanKazan(1);
+        const bilgiler = [
+            "Bir pamuklu tişört üretmek için yaklaşık 2700 litre su harcanır.",
+            "Polyester kumaşların doğada çözülmesi 200 yıldan fazla sürer.",
+            "Dünyada her saniye bir kamyon dolusu tekstil atığı çöpe atılıyor.",
+            "Kıyafetlerin %95’i geri dönüştürülebilir olmasına rağmen sadece %15’i geri dönüştürülüyor."
+        ];
+        function gosterBilgi() {
+            let tarih = new Date();
+            let gun = tarih.getDate() % bilgiler.length;
+            document.getElementById("bilgi").innerText = bilgiler[gun];
+        }
+        gosterBilgi();
+    function setTheme(mode) {
+        if (mode === 'dark') {
+            document.body.style.background = "#121212";
+            document.body.style.color = "white";
+        } else if (mode === 'green') {
+            document.body.style.background = "#eaf7ea";
+            document.body.style.color = "#003300";
+        } else {
+            document.body.style.background = "white";
+            document.body.style.color = "black";
+        }
+    }
+    // Nav butonlarına yeşil hover efekti
+    document.querySelectorAll("nav button").forEach(link => {
+        link.addEventListener("mouseover", () => {
+            link.style.color = "#4CAF50"; // yeşil hover
+        });
+        link.addEventListener("mouseout", () => {
+            link.style.color = ""; // eski haline döner
+        });
+    });
+        // Sekme değiştirme fonksiyonu
+        function showSection(sectionId) {
+            // Tüm bölümleri gizle
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            // Seçilen bölümü göster
+            var target = document.getElementById(sectionId);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('active');
+            }
+        }
+
+        // Karbon ayak izi hesaplayıcısı
+        function calculateCarbon() {
+            const clothingType = document.getElementById('clothingType').value;
+            const monthlyPurchase = document.getElementById('monthlyPurchase').value;
+            const usageDuration = document.getElementById('usageDuration').value;
+            
+            if (!clothingType || !monthlyPurchase || !usageDuration) {
+                alert('Lütfen tüm alanları doldurun!');
+                return;
+            }
+            
+            const monthlyCarbon = parseFloat(clothingType) * parseInt(monthlyPurchase);
+            const totalCarbon = monthlyCarbon * parseInt(usageDuration);
+            const yearlyCarbon = monthlyCarbon * 12;
+            
+            let resultText = `
+                <p><strong>Aylık Karbon Ayak İziniz:</strong> ${monthlyCarbon} kg CO2</p>
+                <p><strong>Yıllık Karbon Ayak İziniz:</strong> ${yearlyCarbon} kg CO2</p>
+                <p><strong>Toplam Karbon Ayak İziniz:</strong> ${totalCarbon} kg CO2</p>
+                
+                <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px;">
+                    <h5>💡 Karbon Ayak İzinizi Azaltma Önerileri:</h5>
+            `;
+            
+            if (yearlyCarbon > 200) {
+                resultText += `
+                    <p style="color: #e74c3c;">🔴 Yüksek karbon ayak izi! Acil önlem almalısınız:</p>
+                    <ul>
+                        <li>İkinci el alışverişi tercih edin</li>
+                        <li>Satın alma sıklığını azaltın</li>
+                        <li>Kaliteli, uzun ömürlü ürünler seçin</li>
+                        <li>Kıyafet takası yapın</li>
+                    </ul>
+                `;
+            } else if (yearlyCarbon > 100) {
+                resultText += `
+                    <p style="color: #f39c12;">🟡 Orta seviye karbon ayak izi:</p>
+                    <ul>
+                        <li>Organik pamuk tercih edin</li>
+                        <li>Yerel markaları destekleyin</li>
+                        <li>Minimal gardırop oluşturun</li>
+                    </ul>
+                `;
+            } else {
+                resultText += `
+                    <p style="color: #27ae60;">🟢 Tebrikler! Düşük karbon ayak izi:</p>
+                    <ul>
+                        <li>Mevcut alışkanlıklarınızı sürdürün</li>
+                        <li>Çevrenizdekilere örnek olun</li>
+                        <li>Geri dönüşüm projelerine katılın</li>
+                    </ul>
+                `;
+            }
+            
+            resultText += `</div>`;
+            
+            document.getElementById('resultContent').innerHTML = resultText;
+            document.getElementById('carbonResult').style.display = 'block';
+        }
+
+        // Kıyafet analizi
+        function analyzeClothing(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    // Basit analiz simülasyonu
+                    const fabrics = [
+                        {
+                            type: "Pamuk",
+                            description: "Bu kıyafet muhtemelen %100 pamuktan üretilmiştir. Organik ve doğal bir kumaş türüdür.",
+                            tips: "Pamuklu ürünler kompost yapılabilir veya temizlik bezi olarak kullanılabilir."
+                        },
+                        {
+                            type: "Polyester",
+                            description: "Bu kıyafet muhtemelen polyester karışımlı bir kumaştan yapılmıştır.",
+                            tips: "Polyester ürünler özel geri dönüşüm merkezlerine götürülmelidir."
+                        },
+                        {
+                            type: "Kot",
+                            description: "Bu muhtemelen kot kumaşından yapılmış bir üründür.",
+                            tips: "Kot ürünler çanta, şort veya dekoratif eşyalara dönüştürülebilir."
+                        }
+                    ];
+                    
+                    const randomFabric = fabrics[Math.floor(Math.random() * fabrics.length)];
+                    
+                    document.getElementById('fabricType').innerHTML = `
+                        <h4>Kumaş Türü: ${randomFabric.type}</h4>
+                        <p>${randomFabric.description}</p>
+                        <p><strong>Öneri:</strong> ${randomFabric.tips}</p>
+                    `;
+                    
+                    // Yakındaki atölyeler (örnek)
+                    document.getElementById('nearbyWorkshops').innerHTML = `
+                        <div style="margin-top: 15px;">
+                            <h5>📍 Kayseri Bölgesindeki Atölyeler:</h5>
+                            <ul>
+                                <li><strong>ReWear Atölyesi</strong> - Melikgazi, 2.5 km</li>
+                                <li><strong>Yeşil Dönüşüm Merkezi</strong> - Kocasinan, 4.1 km</li>
+                                <li><strong>Sürdürülebilir Moda Atölyesi</strong> - Talas, 6.8 km</li>
+                            </ul>
+                        </div>
+                    `;
+                    
+                    // DIY projeler
+                    document.getElementById('diyProjects').innerHTML = `
+                        <div style="margin-top: 15px;">
+                            <p>Fotoğrafını yüklediğiniz kıyafetten evde yapabileceğiniz projeler:</p>
+                            <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <h5>🧵 ${randomFabric.type} için DIY Projeler:</h5>
+                                <p>• Küçük bir el çantası tasarlayabilirsiniz</p>
+                                <p>• Temizlik bezlerine dönüştürebilirsiniz</p>
+                                <p>• Dekoratif yastık kılıfı yapabilirsiniz</p>
+                                <p>• Pet eşyaları (yatak, oyuncak) üretebilirsiniz</p>
+                                
+                                <p style="margin-top: 15px;">
+                                    <strong>📺 Örnek YouTube Videosu:</strong><br>
+                                    "Eski Tişörtten Çanta Yapımı - Adım Adım Anlatım"<br>
+                                    <button style="background: #ff0000; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;" onclick="window.open('https://youtube.com', '_blank')">YouTube'da İzle</button>
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.getElementById('analysisResult').style.display = 'block';
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Pazara ürün ekleme
+        function addToMarketplace() {
+            const productType = document.getElementById('productType').value;
+            const fabricType = document.getElementById('fabricTypeMarket').value;
+            const size = document.getElementById('size').value;
+            const price = document.getElementById('price').value;
+            const description = document.getElementById('description').value;
+            
+            if (!productType || !fabricType || !size || !price || !description) {
+                alert('Lütfen tüm alanları doldurun!');
+                return;
+            }
+            
+            const newItem = document.createElement('div');
+            newItem.className = 'marketplace-item';
+            newItem.innerHTML = `
+                <h4>Yeni ${productType.charAt(0).toUpperCase() + productType.slice(1)}</h4>
+                <p><strong>Kumaş:</strong> ${fabricType} | <strong>Beden:</strong> ${size} | <strong>Fiyat:</strong> ${price} TL</p>
+                <p>${description}</p>
+                <button style="background: #2ed573; color: white; padding: 10px 20px; border: none; border-radius: 15px; cursor: pointer;">İletişime Geç</button>
+            `;
+            
+            document.getElementById('marketplaceItems').insertBefore(newItem, document.getElementById('marketplaceItems').firstChild);
+            
+            // Formu temizle
+            document.getElementById('productType').value = '';
+            document.getElementById('fabricTypeMarket').value = '';
+            document.getElementById('size').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('description').value = '';
+            
+            alert('Ürününüz başarıyla pazara eklendi!');
+        }
+
+        // Başarı hikayesi paylaşma
+        function shareSuccess() {
+            const story = document.querySelector('#community textarea').value;
+            
+            if (!story.trim()) {
+                alert('Lütfen hikayenizi yazın!');
+                return;
+            }
+            
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-card';
+            newComment.innerHTML = `
+                <h4>Yeni Kullanıcı - Kayseri</h4>
+                <p>"${story}"</p>
+                <small>Az önce paylaşıldı</small>
+            `;
+            
+            const communityStories = document.querySelector('#community .comment-card');
+            communityStories.parentNode.insertBefore(newComment, communityStories);
+            
+            document.querySelector('#community textarea').value = '';
+            
+            alert('Hikayeniz başarıyla paylaşıldı! Teşekkürler! 🌟');
+        }
+
+        // İletişim mesajı gönderme
+        function sendMessage() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (!name || !email || !subject || !message) {
+                alert('Lütfen tüm alanları doldurun!');
+                return;
+            }
+            
+            // Mesaj gönderildi simülasyonu
+            alert(`Merhaba ${name}! Mesajınız başarıyla gönderildi. En kısa sürede size geri dönüş yapacağız. 📧`);
+            
+            // Formu temizle
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactSubject').value = '';
+            document.getElementById('contactMessage').value = '';
+        }
+
+        // Sayfa yüklendiğinde ana sayfayı göster
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
